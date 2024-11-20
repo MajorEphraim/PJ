@@ -6,7 +6,7 @@ const Stack = createNativeStackNavigator()
 
 function FirstTimeStack(){
     return(
-        <Stack.Navigator>
+        <Stack.Navigator screenOptions={{ headerShown:false}}>
             <Stack.Screen name='First Time' component={FirstTimeScreen} />
         </Stack.Navigator>
     )
