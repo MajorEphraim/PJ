@@ -1,9 +1,10 @@
-import React,{ useState } from "react";
+import React,{ useState, useEffect } from "react";
 import { StatusBar } from "expo-status-bar";
 import { View, Text, StyleSheet, Dimensions } from 'react-native'
 import StagesComp from "../components/StagesComp";
 import StageComp from "../components/StageComp";
 import Button from "../components/Button"
+//import { createSettingsTable, setFirstTime } from '../database/db'
 
 const width = Dimensions.get('window').width
 const height = Dimensions.get('window').height
@@ -15,6 +16,11 @@ const FirstTimeScreen = ()=>{
     const [pin, setPin] = useState("")
     const [confirmPin, setConfirmPin] = useState("")
     const [borderColor, setBorderColor] = useState(null)
+
+    useEffect(()=>{
+        //createSettingsTable()
+        //setFirstTime()
+    },[])
 
     const handleChange = (val)=>{
 
