@@ -3,8 +3,7 @@ import { View, Text, StyleSheet, TouchableWithoutFeedback,
 
 const width = Dimensions.get('window').width
 
-const StageComp = ({stage, handleChange, name, pin, confirmPin})=>{
-    console.log("STAGE::::: ", stage)
+const StageComp = ({stage, handleChange, name, pin, confirmPin, borderColor})=>{
     
     const compContent = ()=>{
         if(stage === 1)
@@ -19,9 +18,9 @@ const StageComp = ({stage, handleChange, name, pin, confirmPin})=>{
         <View style={styles.container}>
             <Text style={styles.stageText}>{compContent().text}</Text>
             <TextInput
-                value={compContent().value}
+                value={compContent().value}rr
                 placeholder={compContent().placeholder}
-                style={styles.stageInput}
+                style={{...styles.stageInput,borderColor}}
                 onChangeText={val=>handleChange(val)}
             />
         </View>
@@ -45,6 +44,8 @@ const styles = StyleSheet.create({
         borderRadius:15,
         marginVertical:45,
         fontSize:18,
-        textAlign:'center'
+        textAlign:'center',
+        borderWidth:2,
+        borderStyle:'solid'
     }
 })

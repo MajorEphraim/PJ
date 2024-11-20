@@ -21,7 +21,7 @@ const styles =StyleSheet.create({
         justifyContent:'space-between'
     },
     stage:{
-        height:5,
+        height:8,
         flex:1,
         margin:2,
         borderRadius:10

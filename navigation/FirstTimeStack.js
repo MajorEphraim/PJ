@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import FirstTimeScreen from '../screens/FirstTimeScreen';
 

@@ -11,12 +11,14 @@ const height = Dimensions.get('window').height
 
 const FirstTimeScreen = ()=>{
     const [stage, setStage] = useState(1)
-    const [name, setName] = useState(1)
+    const [name, setName] = useState("")
     const [pin, setPin] = useState("")
     const [confirmPin, setConfirmPin] = useState("")
+    const [borderColor, setBorderColor] = useState(null)
 
     const handleChange = (val)=>{
 
+        setBorderColor(null)
         if (stage === 1) 
             setName(val)
         else if(stage === 2)
@@ -26,16 +28,23 @@ const FirstTimeScreen = ()=>{
     }
 
     const handleDone = ()=>{
-        
+        if(confirmPin !== pin){
+            alert("Pins should be the same")
+            return
+        }
     }
 
     const handlePress = (text)=>{
-        if (text === "Prev") 
-            setStage(stage - 1)
-        else if(stage < 3)
+        if (stage === 1 && text === "Next"  && name !=="") 
             setStage(stage + 1)
-        else
+        else if(stage === 2 && text ==="Next"  && pin !=="")
+            setStage(stage + 1)
+        else if(stage === 3 && text === "Done" && confirmPin !=="")
             handleDone()
+        else if(text === "Prev")
+            setStage(stage - 1)
+        else
+            setBorderColor("#E70606")
     }
 
     return (
@@ -46,7 +55,7 @@ const FirstTimeScreen = ()=>{
             </View>
 
             <View style={styles.bottomView}>
-                <StageComp stage={stage} handleChange={handleChange} name={name} pin={pin} confirmPin={confirmPin}/>
+                <StageComp stage={stage} handleChange={handleChange} name={name} pin={pin} confirmPin={confirmPin} borderColor={borderColor}/>
                 <View style={styles.btnView}>
                     {stage === 1 ? null:(
                         <Button name="Prev" bColor={"#ffffed"} tColor={"#310a0a"} handlePress={handlePress}/>
